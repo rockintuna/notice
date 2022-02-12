@@ -2,10 +2,15 @@ package controller;
 
 import dto.NoticeRequestDto;
 import dto.NoticeResponseDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import service.NoticeService;
 
 @RestController
+@RequiredArgsConstructor
 public class NoticeController {
+
+    private final NoticeService noticeService;
 
     @PostMapping("/api/notice")
     public NoticeResponseDto createNotice(@RequestBody NoticeRequestDto requestDto) {
