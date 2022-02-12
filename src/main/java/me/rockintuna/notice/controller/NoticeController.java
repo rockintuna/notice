@@ -1,7 +1,7 @@
-package controller;
+package me.rockintuna.notice.controller;
 
-import dto.NoticeRequestDto;
-import dto.NoticeResponseDto;
+import me.rockintuna.notice.dto.NoticeRequestDto;
+import me.rockintuna.notice.dto.NoticeResponseDto;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,6 +1,6 @@
-package controller;
+package me.rockintuna.notice.controller;
 
-import dto.JwtResponseDto;
+import me.rockintuna.notice.dto.JwtResponseDto;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
