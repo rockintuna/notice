@@ -1,10 +1,7 @@
-package controller;
+package me.rockintuna.notice.controller;
 
-import domain.File;
-import domain.User;
-import dto.NoticeRequestDto;
-import dto.NoticeResponseDto;
-import lombok.RequiredArgsConstructor;
+import me.rockintuna.notice.dto.NoticeRequestDto;
+import me.rockintuna.notice.dto.NoticeResponseDto;
 import org.springframework.web.bind.annotation.*;
 import service.NoticeService;
 

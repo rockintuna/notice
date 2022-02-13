@@ -1,4 +1,4 @@
-package dto;
+package me.rockintuna.notice.dto;
 
 import domain.Notice;
 import lombok.Builder;

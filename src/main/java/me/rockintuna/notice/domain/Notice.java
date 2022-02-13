@@ -1,4 +1,4 @@
-package domain;
+package me.rockintuna.notice.domain;
 
 import dto.NoticeRequestDto;
 import lombok.Getter;
