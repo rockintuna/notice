@@ -48,6 +48,6 @@ public class NoticeController {
 
     @DeleteMapping("/api/notice/{id}")
     public NoticeResponseDto deleteNoticeById(@PathVariable Long id) {
-        return null;
+        return noticeService.deleteNoticeById(id);
     }
 }

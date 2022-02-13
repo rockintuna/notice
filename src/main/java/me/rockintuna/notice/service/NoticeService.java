@@ -40,4 +40,11 @@ public class NoticeService {
         notice.update(requestDto);
         return NoticeResponseDto.from(notice);
     }
+
+    public NoticeResponseDto deleteNoticeById(Long id) {
+        Notice notice = noticeRepository.findById(id)
+                .orElseThrow(() -> new NoticeNotFoundException("공지를 찾을 수 없습니다."));
+        noticeRepository.deleteById(id);
+        return NoticeResponseDto.from(notice);
+    }
 }
