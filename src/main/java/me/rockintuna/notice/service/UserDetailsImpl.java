@@ -2,9 +2,12 @@ package me.rockintuna.notice.service;
 
 import me.rockintuna.notice.domain.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class UserDetailsImpl implements UserDetails{
 
@@ -16,7 +19,12 @@ public class UserDetailsImpl implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        SimpleGrantedAuthority simpleAuthority = new SimpleGrantedAuthority("USER");
+        return List.of(simpleAuthority);
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override
