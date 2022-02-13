@@ -1,11 +1,12 @@
 package me.rockintuna.notice.domain;
 
-import dto.NoticeRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.rockintuna.notice.dto.NoticeRequestDto;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,7 @@ public class Notice {
     private Long viewCount;
 
     @OneToMany(mappedBy = "notice")
-    private List<File> fileList;
+    private List<File> fileList = new ArrayList<>();
 
     @ManyToOne
     private User user;
@@ -41,10 +42,11 @@ public class Notice {
         this.startedDate = requestDto.getStartedDate();
         this.endDate = requestDto.getEndDate();
         this.registrationDate = LocalDateTime.now();
+        this.viewCount = 0L;
         this.user = user;
     }
 
-    public static Notice of(NoticeRequestDto requestDto, User user) {
+    public static Notice create(NoticeRequestDto requestDto, User user) {
         return new Notice(requestDto, user);
     }
 
