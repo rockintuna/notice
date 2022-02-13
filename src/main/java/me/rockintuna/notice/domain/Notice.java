@@ -53,4 +53,8 @@ public class Notice {
     public void addFiles(List<File> fileList) {
         this.fileList.addAll(fileList);
     }
+
+    public void plusViewCount() {
+        this.viewCount += 1;
+    }
 }

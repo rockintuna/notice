@@ -5,12 +5,11 @@ import me.rockintuna.notice.domain.File;
 import me.rockintuna.notice.domain.User;
 import me.rockintuna.notice.dto.NoticeRequestDto;
 import me.rockintuna.notice.dto.NoticeResponseDto;
+import me.rockintuna.notice.service.NoticeService;
 import me.rockintuna.notice.service.UserDetailsImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import me.rockintuna.notice.service.NoticeService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -37,18 +36,18 @@ public class NoticeController {
     }
 
     @GetMapping("/api/notice/{id}")
-    public NoticeResponseDto getNoticeById(@PathVariable String id) {
-        return null;
+    public NoticeResponseDto getNoticeById(@PathVariable Long id) {
+        return noticeService.getNoticeById(id);
     }
 
     @PutMapping("/api/notice/{id}")
-    public NoticeResponseDto updateNoticeById(@PathVariable String id,
+    public NoticeResponseDto updateNoticeById(@PathVariable Long id,
                                               @RequestBody NoticeRequestDto requestDto) {
         return null;
     }
 
     @DeleteMapping("/api/notice/{id}")
-    public NoticeResponseDto deleteNoticeById(@PathVariable String id) {
+    public NoticeResponseDto deleteNoticeById(@PathVariable Long id) {
         return null;
     }
 }
