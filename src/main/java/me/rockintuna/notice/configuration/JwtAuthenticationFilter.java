@@ -1,8 +1,6 @@
 package me.rockintuna.notice.configuration;
 
-import io.jsonwebtoken.Claims;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +17,8 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     private final JwtTokenProvider jwtTokenProvider;
 
     public JwtAuthenticationFilter(
-            AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider) {
+            AuthenticationManager authenticationManager,
+            JwtTokenProvider jwtTokenProvider) {
         super(authenticationManager);
         this.jwtTokenProvider = jwtTokenProvider;
     }
@@ -44,8 +43,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         if ( accessToken == null ) {
             return null;
         } else {
-            Claims claims = jwtTokenProvider.getClaims(accessToken.substring("Bearer ".length()));
-            return new UsernamePasswordAuthenticationToken(claims, null);
+            return jwtTokenProvider.getAuthentication(accessToken.substring("Bearer ".length()));
         }
     }
 }
