@@ -57,4 +57,11 @@ public class Notice {
     public void plusViewCount() {
         this.viewCount += 1;
     }
+
+    public void update(NoticeRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.startedDate = requestDto.getStartedDate();
+        this.endDate = requestDto.getEndDate();
+    }
 }

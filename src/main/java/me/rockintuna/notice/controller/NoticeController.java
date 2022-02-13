@@ -43,7 +43,7 @@ public class NoticeController {
     @PutMapping("/api/notice/{id}")
     public NoticeResponseDto updateNoticeById(@PathVariable Long id,
                                               @RequestBody NoticeRequestDto requestDto) {
-        return null;
+        return noticeService.updateNoticeById(id, requestDto);
     }
 
     @DeleteMapping("/api/notice/{id}")

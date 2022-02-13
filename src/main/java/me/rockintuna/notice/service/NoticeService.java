@@ -33,4 +33,11 @@ public class NoticeService {
         notice.plusViewCount();
         return NoticeResponseDto.from(notice);
     }
+
+    public NoticeResponseDto updateNoticeById(Long id, NoticeRequestDto requestDto) {
+        Notice notice = noticeRepository.findById(id)
+                .orElseThrow(() -> new NoticeNotFoundException("공지를 찾을 수 없습니다."));
+        notice.update(requestDto);
+        return NoticeResponseDto.from(notice);
+    }
 }
