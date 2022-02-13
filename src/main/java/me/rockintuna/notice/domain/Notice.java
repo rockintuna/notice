@@ -31,7 +31,7 @@ public class Notice {
     private Long viewCount;
 
     @OneToMany(mappedBy = "notice")
-    private List<File> fileList = new ArrayList<>();
+    private List<FileInfo> fileInfoList = new ArrayList<>();
 
     @ManyToOne
     private User user;
@@ -50,8 +50,8 @@ public class Notice {
         return new Notice(requestDto, user);
     }
 
-    public void addFiles(List<File> fileList) {
-        this.fileList.addAll(fileList);
+    public void addFiles(List<FileInfo> fileInfoList) {
+        this.fileInfoList.addAll(fileInfoList);
     }
 
     public void plusViewCount() {

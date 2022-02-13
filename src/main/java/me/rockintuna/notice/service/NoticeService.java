@@ -1,7 +1,7 @@
 package me.rockintuna.notice.service;
 
 import lombok.RequiredArgsConstructor;
-import me.rockintuna.notice.domain.File;
+import me.rockintuna.notice.domain.FileInfo;
 import me.rockintuna.notice.domain.Notice;
 import me.rockintuna.notice.domain.User;
 import me.rockintuna.notice.dto.NoticeRequestDto;
@@ -20,9 +20,9 @@ public class NoticeService {
 
     private final NoticeRepository noticeRepository;
 
-    public NoticeResponseDto createNotice(NoticeRequestDto requestDto, User user, List<File> fileList) {
+    public NoticeResponseDto createNotice(NoticeRequestDto requestDto, User user, List<FileInfo> fileInfoList) {
         Notice notice = Notice.create(requestDto, user);
-        notice.addFiles(fileList);
+        notice.addFiles(fileInfoList);
         Notice createdNotice = noticeRepository.save(notice);
         return NoticeResponseDto.from(createdNotice);
     }
