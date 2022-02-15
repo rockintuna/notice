@@ -23,19 +23,26 @@ public class FileService {
     private String destination;
 
     public List<FileInfo> upload(List<MultipartFile> files) {
-        List<FileInfo> fileInfoList = new ArrayList<>();
         if ( files != null ) {
             try {
-                for (MultipartFile multipartFile : files) {
-                    String originalfileName = multipartFile.getOriginalFilename();
-                    File file = new File(destination + originalfileName);
-                    multipartFile.transferTo(file);
-                    FileInfo savedFileInfo = fileInfoRepository.save(FileInfo.from(file));
-                    fileInfoList.add(savedFileInfo);
-                }
+                List<FileInfo> fileInfoList = fileInfoListFrom(files);
+                return fileInfoList;
             } catch ( IOException exception ) {
                 throw new FileUploadException("파일 업로드를 실패하였습니다." + exception.getMessage());
             }
+        }
+        return new ArrayList<>();
+    }
+
+    private List<FileInfo> fileInfoListFrom(List<MultipartFile> files) throws IOException {
+        List<FileInfo> fileInfoList = new ArrayList<>();
+        for (MultipartFile multipartFile : files) {
+            String originalfileName = multipartFile.getOriginalFilename();
+            File file = new File(destination + originalfileName);
+            multipartFile.transferTo(file);
+
+            FileInfo savedFileInfo = fileInfoRepository.save(FileInfo.from(file));
+            fileInfoList.add(savedFileInfo);
         }
         return fileInfoList;
     }
