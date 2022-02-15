@@ -46,7 +46,7 @@ public class NoticeController {
 
     @PutMapping("/api/notice/{id}")
     public NoticeResponseDto updateNoticeById(@PathVariable Long id,
-                                              @RequestBody NoticeRequestDto requestDto) {
+                                              @RequestBody @Valid NoticeRequestDto requestDto) {
         return noticeService.updateNoticeById(id, requestDto);
     }
 
