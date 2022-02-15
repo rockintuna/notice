@@ -20,6 +20,11 @@ public class GlobalController {
     }
 
     @ExceptionHandler
+    public ResponseEntity<?> emailInUsedExceptionHandler(EmailInUsedException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler
     public ResponseEntity<?> noticeNotFoundExceptionHandler(NoticeNotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }

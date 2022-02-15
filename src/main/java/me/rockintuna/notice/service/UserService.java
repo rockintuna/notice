@@ -7,6 +7,7 @@ import me.rockintuna.notice.dto.RegisterUserRequestDto;
 import me.rockintuna.notice.dto.UserLoginRequestDto;
 import me.rockintuna.notice.dto.UserLoginResponseDto;
 import me.rockintuna.notice.dto.UserResponseDto;
+import me.rockintuna.notice.exception.EmailInUsedException;
 import me.rockintuna.notice.exception.LoginFailureException;
 import me.rockintuna.notice.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,6 +35,10 @@ public class UserService {
     }
 
     public UserResponseDto register(RegisterUserRequestDto requestDto) {
+        if ( userRepository.findByEmail(requestDto.getEmail()).isPresent() ) {
+            throw new EmailInUsedException("이미 사용중인 메일입니다.");
+        }
+
         String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
         User user = User.create(requestDto, encodedPassword);
         User createdUser = userRepository.save(user);
