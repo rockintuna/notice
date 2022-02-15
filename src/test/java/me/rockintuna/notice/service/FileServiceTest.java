@@ -36,11 +36,12 @@ class FileServiceTest {
     @DisplayName("파일 업로드 성공")
     void upload() throws IOException {
         //given
-        ReflectionTestUtils.setField(fileService, "destination", "/Users/ijeong-in/Git_repo/notice/files/");
+        String destination = "src/test/resources/static/";
+        ReflectionTestUtils.setField(fileService, "destination", destination);
         List<MultipartFile> multipartFiles = new ArrayList<>();
         String fileName = "test.png";
         String contentType = "image/png";
-        String filePath = "/Users/ijeong-in/Git_repo/notice/files/test.png";
+        String filePath = "src/test/resources/static/test.png";
         MockMultipartFile mockMultipartFile = getMockMultipartFile(fileName, contentType, filePath);
         multipartFiles.add(mockMultipartFile);
         FileInfo savedFile = FileInfo.from(new File(filePath));

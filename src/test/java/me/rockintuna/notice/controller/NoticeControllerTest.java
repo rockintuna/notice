@@ -168,9 +168,9 @@ class NoticeControllerTest {
         MockPart noticePostRequest = new MockPart("noticePostRequest", body.getBytes(StandardCharsets.UTF_8));
         noticePostRequest.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 
-        String fileName = "testFile";
+        String fileName = "test.png";
         String contentType = "image/png";
-        String filePath = "/Users/ijeong-in/Git_repo/notice/files/test.png";
+        String filePath = "src/test/resources/static/test.png";
         MockMultipartFile mockMultipartFile = getMockMultipartFile(fileName, contentType, filePath);
 
         List<FileInfo> fileInfoList = List.of(FileInfo.from(new File(filePath)));
@@ -211,9 +211,9 @@ class NoticeControllerTest {
         MockPart noticePostRequest = new MockPart("noticePostRequest", body.getBytes(StandardCharsets.UTF_8));
         noticePostRequest.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 
-        String fileName = "testFile";
+        String fileName = "test.png";
         String contentType = "image/png";
-        String filePath = "/Users/ijeong-in/Git_repo/notice/files/test.png";
+        String filePath = "src/test/resources/static/test.png";
         MockMultipartFile mockMultipartFile = getMockMultipartFile(fileName, contentType, filePath);
 
         given(fileService.upload(any())).willThrow(new FileUploadException("파일 업로드를 실패하였습니다."));
