@@ -23,4 +23,9 @@ public class GlobalController {
     public ResponseEntity<?> noticeNotFoundExceptionHandler(NoticeNotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
+
+    @ExceptionHandler
+    public ResponseEntity<?> fileUploadExceptionHandler(FileUploadException exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+    }
 }
