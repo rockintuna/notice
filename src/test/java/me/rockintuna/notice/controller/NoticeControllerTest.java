@@ -230,7 +230,7 @@ class NoticeControllerTest {
 
     private MockMultipartFile getMockMultipartFile(String fileName, String contentType, String path) throws IOException {
         FileInputStream fileInputStream = new FileInputStream(path);
-        return new MockMultipartFile(fileName, fileName + "." + contentType, contentType, fileInputStream);
+        return new MockMultipartFile(fileName, fileName, contentType, fileInputStream);
     }
 
     @Test
