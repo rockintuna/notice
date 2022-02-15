@@ -35,11 +35,10 @@ public class Notice {
     private Long viewCount;
 
     @OneToMany(mappedBy = "notice")
-    @Column(nullable = false)
     private List<FileInfo> fileInfoList = new ArrayList<>();
 
     @ManyToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private User user;
 
     private Notice(NoticeRequestDto requestDto, User user) {
