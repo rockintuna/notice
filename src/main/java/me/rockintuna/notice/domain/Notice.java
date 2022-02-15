@@ -37,7 +37,7 @@ public class Notice {
     @OneToMany(mappedBy = "notice")
     private List<FileInfo> fileInfoList = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User user;
 

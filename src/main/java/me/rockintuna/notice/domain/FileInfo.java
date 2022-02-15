@@ -18,7 +18,7 @@ public class FileInfo {
 
     private String filePath;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Notice notice;
 
     public FileInfo(String fileName, String filePath) {
