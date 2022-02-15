@@ -28,7 +28,9 @@ public class UserService {
         if(!passwordEncoder.matches(requestDto.getPassword(), user.getPassword()))
             throw new LoginFailureException("비밀번호가 일치하지 않습니다.");
 
-        return new UserLoginResponseDto(jwtTokenProvider.responseAccessToken(user));
+        return UserLoginResponseDto.builder()
+                .accessToken(jwtTokenProvider.responseAccessToken(user))
+                .build();
     }
 
     public UserResponseDto register(RegisterUserRequestDto requestDto) {

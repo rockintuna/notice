@@ -13,7 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -28,9 +28,9 @@ public class NoticeController {
     @PostMapping("/api/notice")
     public ResponseEntity<NoticeResponseDto> createNotice(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
-            @RequestPart(value = "noticePostRequest") NoticeRequestDto requestDto,
+            @RequestPart(value = "noticePostRequest") @Valid NoticeRequestDto requestDto,
             @RequestPart(value = "files", required = false) List<MultipartFile> files)
-            throws URISyntaxException, IOException {
+            throws URISyntaxException {
         User user = userDetails.getUser();
         List<FileInfo> fileInfoList = fileService.upload(files);
         NoticeResponseDto responseDto = noticeService.createNotice(requestDto, user, fileInfoList);

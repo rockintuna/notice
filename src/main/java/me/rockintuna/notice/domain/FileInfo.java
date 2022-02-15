@@ -28,8 +28,6 @@ public class FileInfo {
     }
 
     public static FileInfo from(File file) {
-        System.out.println(file.getName());
-        System.out.println(file.getPath());
         return new FileInfo(file.getName(), file.getPath());
     }
 }

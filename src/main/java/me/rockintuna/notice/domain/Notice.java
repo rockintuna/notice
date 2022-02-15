@@ -18,22 +18,28 @@ public class Notice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
     private LocalDateTime registrationDate;
 
     private LocalDateTime startedDate;
 
     private LocalDateTime endDate;
 
+    @Column(nullable = false)
     private Long viewCount;
 
     @OneToMany(mappedBy = "notice")
+    @Column(nullable = false)
     private List<FileInfo> fileInfoList = new ArrayList<>();
 
     @ManyToOne
+    @Column(nullable = false)
     private User user;
 
     private Notice(NoticeRequestDto requestDto, User user) {

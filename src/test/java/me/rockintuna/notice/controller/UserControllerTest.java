@@ -126,7 +126,7 @@ class UserControllerTest {
                 new UserLoginRequestDto("tester@notice.test", "password");
         String body = objectMapper.writeValueAsString(userLoginRequestDto);
         String accessToken = "12345abcde";
-        UserLoginResponseDto responseDto = new UserLoginResponseDto(accessToken);
+        UserLoginResponseDto responseDto = UserLoginResponseDto.builder().accessToken(accessToken).build();
         given(userService.login(any(UserLoginRequestDto.class))).willReturn(responseDto);
 
         //when
