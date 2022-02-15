@@ -1,12 +1,14 @@
 package me.rockintuna.notice.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.File;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class FileInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,9 +24,6 @@ public class FileInfo {
     public FileInfo(String fileName, String filePath) {
         this.fileName = fileName;
         this.filePath = filePath;
-    }
-
-    public FileInfo() {
     }
 
     public static FileInfo from(File file) {

@@ -1,12 +1,14 @@
 package me.rockintuna.notice.domain;
 
-import me.rockintuna.notice.dto.RegisterUserRequestDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import me.rockintuna.notice.dto.RegisterUserRequestDto;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,9 +27,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public User() {
     }
 
     public static User create(RegisterUserRequestDto requestDto, String encodedPassword) {
